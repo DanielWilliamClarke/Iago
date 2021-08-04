@@ -6,25 +6,24 @@ import (
 
 type example struct {
 	Input    string
-	Expected int
+	Expected string
 }
 
 func TestSubstringLength(t *testing.T) {
 	examples := []example{
-		{"", 0},
-		{"bbbbb", 1},
-		{"abc", 3},
-		{"abcabcbb", 3},
-		{"pwwkew", 3},
-		{"abcbdefgf", 6},
-		{"abcabcdefghijklmnopqrstuvwxyzxyz", 26},
+		{"", ""},
+		{"bbbbb", "b"},
+		{"abc", "abc"},
+		{"abcabcbb", "abc"},
+		{"pwwkew", "wke"},
+		{"abcbdefgf", "cbdefg"},
+		{"abcabcdefghijklmnopqrstuvwxyzxyz", "abcdefghijklmnopqrstuvwxyz"},
 	}
 
 	for _, e := range examples {
-		actual := CountLargedUniqueSubstring(e.Input)
-
+		actual := CountLargestUniqueSubstring(e.Input)
 		if actual != e.Expected {
-			t.Errorf("expected output %d, actual %d", e.Expected, actual)
+			t.Errorf("expected output %s, actual %s", e.Expected, actual)
 		}
 	}
 }
