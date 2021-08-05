@@ -1,6 +1,9 @@
 package lib
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 // Given a string, write a function that returns the length of the longest substring that does not contain repeating characters example:
 // Input: s = "abcabcbb"
@@ -12,21 +15,16 @@ import "fmt"
 // Input: s = ""
 // Output: 0
 
-func CountLargestUniqueSubstring(input string) string {
-	var largest string
-	for index, currentChar := range input {
-		// create map of seen runes
-		substring := string(currentChar)
-		seen := map[rune]bool{currentChar: true}
-
+func ExtractLargestUniqueSubstring(input string) (largest string) {
+	chars := strings.Split(input, "")
+	for index, substring := range chars {
 		// iterate until the end of the string starting at index
-		for _, nextChar := range input[index+1:] {
+		for _, nextChar := range chars[index+1:] {
 			// check if next char in seqeunce has been previously seen
-			if _, ok := seen[nextChar]; ok {
+			if strings.Contains(substring, nextChar) {
 				break
 			}
-			substring = fmt.Sprintf("%s%s", substring, string(nextChar))
-			seen[nextChar] = true
+			substring = fmt.Sprintf("%s%s", substring, nextChar)
 		}
 
 		// here we set the max unique substring

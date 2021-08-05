@@ -27,7 +27,7 @@ func main() {
 		log.Printf("error encountered %v", err)
 	}
 	str := base64.URLEncoding.EncodeToString(b)
-	substring := lib.CountLargestUniqueSubstring(str)
+	substring := lib.ExtractLargestUniqueSubstring(str)
 	fmt.Printf(
 		"%s\n\ncontains a unique substring %s of length %d",
 		str, substring, len(substring))
