@@ -23,7 +23,7 @@ func TestSubstringLength(t *testing.T) {
 	for _, e := range examples {
 		actual := ExtractLargestUniqueSubstring(e.Input)
 		if actual != e.Expected {
-			t.Errorf("expected output %s, actual %s", e.Expected, actual)
+			t.Errorf("input %s requires expected output %s, actual %s", e.Input, e.Expected, actual)
 		}
 	}
 }
