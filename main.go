@@ -24,7 +24,7 @@ func main() {
 	n := 1024
 	b, err := GenerateRandomBytes(n)
 	if err != nil {
-		log.Printf("error encountered %v", err)
+		log.Fatalf("error encountered %v", err)
 	}
 	str := base64.URLEncoding.EncodeToString(b)
 	substring := lib.ExtractLargestUniqueSubstring(str)
